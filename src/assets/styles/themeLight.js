@@ -3,7 +3,9 @@ export const themeLight = {
         VeryDarkBlue: "hsl(200, 15%, 8%)",
         DarkGray: "hsl(0, 0%, 52%)",
         VeryLightGray: "hsl(0, 0%, 98%)",
-        White: "hsl(0, 0%, 100%)",
+        BoxBackGroundColor: "hsl(0, 0%, 100%)",
+        FontColor:"hsl(0, 0%, 0%)",
+        Shadow:"hsla(0, 0%, 72%, 0.5)",
     },
     mediaQueries:{
         xs:"375px",

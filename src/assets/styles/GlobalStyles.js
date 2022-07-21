@@ -19,7 +19,8 @@ export const GlobalStyle = createGlobalStyle`
     body{
         width:100vw;
         height: 100%;
-        max-width:1440px;
+        //max-width:1440px;
+        min-width: 375px;
     }
 
 

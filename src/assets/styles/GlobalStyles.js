@@ -6,9 +6,9 @@ export const GlobalStyle = createGlobalStyle`
 
 
     html{
-
         box-sizing: border-box;
         min-width: 375px;
+        font-size:14px;
     }
 
     *{

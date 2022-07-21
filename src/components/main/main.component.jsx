@@ -9,6 +9,7 @@ import { BrowserRouter,
          Routes, 
          Route,
 } from "react-router-dom";
+import { Wraper } from "./main.styles";
 
 
 const Main = () =>{
@@ -17,14 +18,16 @@ const Main = () =>{
         <>
             <ThemeProvider theme={themeLight}>
                 <GlobalStyle />
-                <BrowserRouter>
-                    <Routes>
-                       <Route path ="/" element ={<Navigation />}>
-                            <Route index={true} element={<Home />}></Route>
-                            <Route path="Details" element={<CountryDetails/>}></Route>
-                       </Route>
-                    </Routes>
-                </BrowserRouter>
+                <Wraper>
+                    <BrowserRouter>
+                        <Routes>
+                        <Route path ="/" element ={<Navigation />}>
+                                <Route index={true} element={<Home />}></Route>
+                                <Route path="Details" element={<CountryDetails/>}></Route>
+                        </Route>
+                        </Routes>
+                    </BrowserRouter>
+                </Wraper>
             </ThemeProvider>
         </>
     )

@@ -1,8 +1,11 @@
-export const thmeDark ={
+export const themeDark ={
     colors:{
-        DarkBlue: "hsl(209, 23%, 22%)",
+        BoxBackGroundColor: "hsl(209, 23%, 22%)",
+        FontColor:"hsl(0, 0%, 100%)",
         VeryDarkBlue: "hsl(207, 26%, 17%)",
+        VeryLightGray: "hsl(0, 0%, 98%)",
         White: "hsl(0, 0%, 100%)",
+        FontColor:"hsl(0, 0%, 100%)"
     },
     mediaQueries:{
         xs:"375px",

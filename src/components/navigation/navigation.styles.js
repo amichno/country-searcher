@@ -1,10 +1,14 @@
 import  styled  from "styled-components";
 
-export const NavBar = styled.div`
+export const Box = styled.div`
     width:100%;
     height: 3rem;
-    margin-top: 1rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
     display: flex;
+    background-color: ${({theme})=>theme.colors.BoxBackGroundColor};
+    box-shadow: 0px -10px 30px 8px ${({theme})=>theme.colors.Shadow};
+    align-items:center;
 `
 
 export const Title = styled.div`
@@ -21,7 +25,9 @@ export const Icon = styled.div`
     margin-right: 10%;
     margin-left: auto;
     display: flex;
-    align-items:center ;
+    align-items:center;
+    justify-content:center;
+    cursor: pointer;
 `
 
 export const Paragraph = styled.p`

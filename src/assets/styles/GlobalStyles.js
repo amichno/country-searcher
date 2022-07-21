@@ -2,7 +2,7 @@ import { StyledComponent, createGlobalStyle, ThemeProvider } from "styled-compon
 
 export const GlobalStyle = createGlobalStyle`
 
-   // @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;600;800&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;600;800&display=swap');
 
 
     html{
@@ -19,7 +19,7 @@ export const GlobalStyle = createGlobalStyle`
     body{
         width:100vw;
         height: 100%;
-        max-width:1440px;
+        //max-width:1440px;
         min-width: 375px;
     }
 

@@ -1,6 +1,11 @@
+import { HomeWraper } from "./home.styles";
+
+
 const Home = () =>{
     return(
-        <div>Home</div>
+        <HomeWraper>
+            Home
+        </HomeWraper>
     )
 }
 

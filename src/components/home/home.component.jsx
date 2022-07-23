@@ -4,7 +4,8 @@ import { HomeWraper } from "./home.styles";
 const Home = () =>{
     return(
         <HomeWraper>
-            Home
+            <input></input>
+            <datalist></datalist>
         </HomeWraper>
     )
 }

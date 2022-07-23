@@ -8,10 +8,4 @@ export const themeDark ={
         White: "hsl(0, 0%, 100%)",
         FontColor:"hsl(0, 0%, 100%)"
     },
-    mediaQueries:{
-        xs:"375px",
-        s:"670px",
-        m:"992px",
-        l:"1440px"
-    }
 }

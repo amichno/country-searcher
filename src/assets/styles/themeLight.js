@@ -9,10 +9,4 @@ export const themeLight = {
         Shadow:"hsla(0, 0%, 72%, 0.5)",
         Black:"black"
     },
-    mediaQueries:{
-        xs:"440px",
-        s:"530px",
-        m:"992px",
-        l:"1440px"
-    }
 }

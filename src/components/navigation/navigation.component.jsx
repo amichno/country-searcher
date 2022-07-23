@@ -11,13 +11,15 @@ const Navigation = (props)=>{
 
     return(
         <>
-            <Box>
-               <Title isLeft={true}>Where in the world?</Title>
-               <Icon onClick={props.onClick}>   
-                    <FontAwesomeIcon icon={faMoon} 
-                                    size={"1x"}/>
-                    <Paragraph>Dark mode</Paragraph>
-               </Icon>
+            <Box isFirst={true}>
+                <Box isFirst={false}>
+                    <Title isLeft={true}>Where in the world?</Title>
+                    <Icon onClick={props.onClick}>   
+                            <FontAwesomeIcon icon={faMoon} 
+                                            size={"1x"}/>
+                            <Paragraph>Dark mode</Paragraph>
+                    </Icon>
+               </Box>
             </Box>  
             <Outlet/>
         </>      

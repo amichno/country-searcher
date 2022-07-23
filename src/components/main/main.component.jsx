@@ -23,7 +23,6 @@ const Main = () =>{
             else   
                 return themeLight
         });
-        console.log(LightMode)
     }
 
     return (
@@ -33,10 +32,10 @@ const Main = () =>{
                 <Wraper>
                     <BrowserRouter>
                         <Routes>
-                        <Route path ="/" element ={<Navigation onClick={ChangeTheme}/>}>
-                                <Route index={true} element={<Home />}></Route>
-                                <Route path="Details" element={<CountryDetails/>}></Route>
-                        </Route>
+                            <Route path ="/" element ={<Navigation onClick={ChangeTheme}/>}>
+                                    <Route index={true} element={<Home />}></Route>
+                                    <Route path="Details" element={<CountryDetails/>}></Route>
+                            </Route>
                         </Routes>
                     </BrowserRouter>
                 </Wraper>

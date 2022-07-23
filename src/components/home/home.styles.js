@@ -1,7 +1,10 @@
-const Home = ()=>{
-    return(
-        <div>Home</div>
-    )
-}
+import styled from "styled-components";
 
-export default Home;
+
+export const HomeWraper = styled.div`
+    width:100%;
+    height: 100%;
+    background-color: ${({theme})=>theme.colors.BackGround};
+    display: flex;
+    justify-content: center;
+`

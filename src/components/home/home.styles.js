@@ -7,4 +7,6 @@ export const HomeWraper = styled.div`
     background-color: ${({theme})=>theme.colors.BackGround};
     display: flex;
     justify-content: center;
+    padding-top: 2rem;
+    flex-wrap: wrap;
 `

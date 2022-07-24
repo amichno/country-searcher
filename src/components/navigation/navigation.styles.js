@@ -1,5 +1,6 @@
 import  styled  from "styled-components";
 import { device } from "../../assets/styles/mediaQueries";
+import { ShadowBox } from "../../assets/styles/mixins";
 
 export const Box = styled.div`
     min-width: 375px;

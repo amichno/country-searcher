@@ -7,12 +7,7 @@ export const themeLight = {
         BackGround:"hsl(0, 0%, 100%)",
         FontColor:"hsl(0, 0%, 0%)",
         Shadow:"hsla(0, 0%, 72%, 0.5)",
-        Black:"black"
+        Black:"black",
     },
-    mediaQueries:{
-        xs:"440px",
-        s:"530px",
-        m:"992px",
-        l:"1440px"
-    }
+    
 }

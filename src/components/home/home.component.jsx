@@ -1,10 +1,12 @@
+import SearchBox from "../searchBox/searchBox.component";
 import { HomeWraper } from "./home.styles";
 
 
 const Home = () =>{
     return(
         <HomeWraper>
-            Home
+            <SearchBox />
+            <datalist></datalist>
         </HomeWraper>
     )
 }

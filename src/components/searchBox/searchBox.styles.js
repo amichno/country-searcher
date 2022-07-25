@@ -7,9 +7,6 @@ export const InputBox = styled.input`
     width:16rem;
     height: 2rem;
     margin-left: 10%;
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    border-radius: 5px;
     position: relative;
     background-image: url('../../assets/icons/searchIcon.svg');
     background-repeat: no-repeat;
@@ -18,7 +15,6 @@ export const InputBox = styled.input`
     padding-left: 3.5rem;
     ::placeholder{
         color: ${({theme})=>theme.colors.FontColor};
-        fill: ${({theme})=>theme.colors.FontColor};
     }
     padding-top:0.5rem;
     padding-bottom: 0.5rem;

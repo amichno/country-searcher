@@ -9,6 +9,7 @@ export const GlobalStyle = createGlobalStyle`
         box-sizing: border-box;
         min-width: 375px;
         font-size:14px;
+
     }
 
     *{
@@ -21,6 +22,8 @@ export const GlobalStyle = createGlobalStyle`
         height: 100%;
         //max-width:1440px;
         min-width: 375px;
+        margin-left:auto;
+        margin-right: auto;
     }
 
 

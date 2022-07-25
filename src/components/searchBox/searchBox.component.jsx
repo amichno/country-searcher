@@ -1,9 +1,11 @@
-import { InputBox } from "./searchBox.styles";
-
+import { InputBox, IconBackground } from "./searchBox.styles";
 const SearchBox = ()=>{
     return(
-        <InputBox>
-        </InputBox>
+        
+        <>
+        <InputBox type = "Search" id="inputCountry" placeholder="Search for a country..."/>
+        </>
+        
     )
 
 }

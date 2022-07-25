@@ -4,9 +4,10 @@ export const themeLight = {
         DarkGray: "hsl(0, 0%, 52%)",
         VeryLightGray: "hsl(0, 0%, 98%)",
         BoxBackGroundColor: "hsl(0, 0%, 100%)",
+        VeryDarkBlue: "hsl(207, 26%, 17%)",
         BackGround:"hsl(0, 0%, 100%)",
         FontColor:"hsl(0, 0%, 0%)",
-        Shadow:"hsla(0, 0%, 72%, 0.5)",
+        Shadow:"hsl(0, 0%, 75%)",
         Black:"black",
     },
     

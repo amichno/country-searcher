@@ -4,7 +4,6 @@ import { Box,
          Icon,
         Paragraph } from "./navigation.styles";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-//import { faMoon } from "@fortawesome/free-solid-svg-icons";
 import { faMoon } from '@fortawesome/free-regular-svg-icons'
 
 const Navigation = (props)=>{

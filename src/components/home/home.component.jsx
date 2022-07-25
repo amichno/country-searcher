@@ -6,7 +6,7 @@ const Home = () =>{
     return(
         <HomeWraper>
             <SearchBox />
-            <datalist></datalist>
+        
         </HomeWraper>
     )
 }

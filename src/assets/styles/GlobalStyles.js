@@ -1,4 +1,4 @@
-import { StyledComponent, createGlobalStyle, ThemeProvider } from "styled-components";
+import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyle = createGlobalStyle`
 
@@ -19,8 +19,13 @@ export const GlobalStyle = createGlobalStyle`
     body{
         width:100vw;
         height: 100%;
-        //max-width:1440px;
         min-width: 375px;
+        margin-left:auto;
+        margin-right: auto;
+    }
+
+    input{
+        color:inherit;
     }
 
 

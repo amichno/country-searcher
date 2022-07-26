@@ -1,9 +1,12 @@
-import { InputBox } from "./searchBox.styles";
+import { InputBox} from "./searchBox.styles";
 
-const SearchBox = ()=>{
+const SearchBox = (props)=>{
     return(
-        <InputBox>
-        </InputBox>
+             <InputBox type = "Search" 
+                        id="inputCountry" 
+                        placeholder="Search for a country..." 
+                        onChange={props.onChange}> 
+             </InputBox>  
     )
 
 }

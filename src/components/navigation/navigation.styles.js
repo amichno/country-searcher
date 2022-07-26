@@ -10,7 +10,7 @@ export const Box = styled.div`
     padding-bottom: 1rem;
     display: flex;
     background-color: ${({theme})=>theme.colors.BoxBackGroundColor};
-    box-shadow: ${props=>props.isFirst?"none":"0px -10px 20px 8px lightgrey"};
+    box-shadow: 0px -10px 20px 8px ${({theme})=>theme.colors.Shadow};
     align-items:center;
 `
 
@@ -19,7 +19,7 @@ export const Title = styled.div`
     height: fit-content;
     font-weight:600;
     font-size: 2.5rem;
-    transition: font-size 2s;
+    transition: font-size 0.3s;
     margin-left: ${props => props.isLeft?"10%":"0%"};
     @media (max-width:${device.s}){
         font-size:2rem;
@@ -41,5 +41,5 @@ export const Icon = styled.div`
 `
 
 export const Paragraph = styled.p`
-
+    
 `

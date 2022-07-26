@@ -15,6 +15,8 @@ import { Wraper } from "./main.styles";
 
 const Main = () =>{
     const [LightMode, setLightMode] = useState(themeLight);
+    const [SearchCountry, setSearchCountry] = useState('');
+    const url = "https://restcountries.com/v3.1/all";
 
     const ChangeTheme = ()=>{
         setLightMode(prevState=>{
@@ -25,6 +27,24 @@ const Main = () =>{
         });
     }
 
+    const ApiConnection = ()=>{
+       const result = fetch(url).then(data => data.json()).then(JSONdata =>
+                {
+                    const result = JSON.stringify(JSONdata);
+                    const resultJS = JSON.parse(result)
+                    console.log(resultJS[0].flags.svg); 
+                }
+       )
+    }
+
+    useEffect(()=>{
+        ApiConnection();
+    },[]);
+
+    const GetPlaceHolder = (event)=>{
+        setSearchCountry(event.target.value);
+    }
+
     return (
         <>
             <ThemeProvider theme={LightMode}>
@@ -33,8 +53,12 @@ const Main = () =>{
                     <BrowserRouter>
                         <Routes>
                             <Route path ="/" element ={<Navigation onClick={ChangeTheme}/>}>
-                                    <Route index={true} element={<Home />}></Route>
-                                    <Route path="Details" element={<CountryDetails/>}></Route>
+                                    <Route index={true} 
+                                           element={<Home onChange={GetPlaceHolder}/>}>
+                                    </Route>
+                                    <Route path="Details" 
+                                           element={<CountryDetails/>}>
+                                    </Route>
                             </Route>
                         </Routes>
                     </BrowserRouter>

@@ -13,9 +13,6 @@ export const InputBox = styled.input`
     background-size: 0.8rem;
     background-position: 1.5rem;
     padding-left: 3.5rem;
-    ::placeholder{
-        color: ${({theme})=>theme.colors.FontColor};
-    }
     padding-top:0.5rem;
     padding-bottom: 0.5rem;
     ${ShadowBox};

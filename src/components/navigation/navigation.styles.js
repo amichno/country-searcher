@@ -41,5 +41,5 @@ export const Icon = styled.div`
 `
 
 export const Paragraph = styled.p`
-
+    
 `

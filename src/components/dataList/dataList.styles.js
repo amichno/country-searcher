@@ -5,6 +5,7 @@ export const InputList =styled.input`
     width: 10rem;
     margin-right:10%;
     margin-left:auto;
+    padding-left:1%;
     ${ShadowBox};
     &:focus{
         outline:none;
@@ -12,5 +13,5 @@ export const InputList =styled.input`
 `;
 
 export const DropDownList=styled.datalist`
-    width: 100%;
+   
 `;

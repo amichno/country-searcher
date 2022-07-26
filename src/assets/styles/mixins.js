@@ -7,4 +7,5 @@ export const ShadowBox = css`
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
     border-radius: 5px;
+    font-size: 0.8rem;
 `

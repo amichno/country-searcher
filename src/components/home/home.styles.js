@@ -10,5 +10,5 @@ export const HomeWraper = styled.div`
     display: flex;
     //justify-content: center;
     padding-top: 2rem;
-   // flex-wrap: wrap;
+    flex-wrap: wrap;
 `

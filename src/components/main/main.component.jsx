@@ -32,7 +32,8 @@ const Main = () =>{
                 {
                     const result = JSON.stringify(JSONdata);
                     const resultJS = JSON.parse(result)
-                    console.log(resultJS[0].flags.svg); 
+                    for(let i=0; i<resultJS.length; i++)
+                     console.log(resultJS[i].flags.svg); 
                 }
        )
     }

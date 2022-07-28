@@ -1,5 +1,5 @@
 import styled from "styled-components";
-
+import {device} from "../../assets/styles/mediaQueries";
 
 export const HomeWraper = styled.div`
     width:100%;
@@ -8,7 +8,10 @@ export const HomeWraper = styled.div`
     padding-bottom: 1rem;
     background-image: linear-gradient(${({theme})=>theme.colors.BackGround}, ${({theme})=>theme.colors.BoxBackGroundColor});
     display: flex;
-    //justify-content: center;
     padding-top: 2rem;
     flex-wrap: wrap;
+    @media (max-width:${device.xs}){
+        flex-direction: column;
+        align-items: center;
+    }
 `

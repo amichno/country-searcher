@@ -20,7 +20,7 @@ const Main = () =>{
 
     const ChangeTheme = ()=>{
         setLightMode(prevState=>{
-            if (prevState == themeLight)
+            if (prevState === themeLight)
                 return themeDark
             else   
                 return themeLight
@@ -31,8 +31,9 @@ const Main = () =>{
        const result = fetch(url).then(data => data.json()).then(JSONdata =>
                 {
                     const result = JSON.stringify(JSONdata);
-                    const resultJS = JSON.parse(result)
-                    console.log(resultJS[0].flags.svg); 
+                    const resultJS = JSON.parse(result);
+                    for(let i=0; i<resultJS.length; i++)
+                     console.log(resultJS[i].flags.svg); 
                 }
        )
     }

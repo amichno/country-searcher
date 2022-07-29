@@ -7,7 +7,6 @@ export const GlobalStyle = createGlobalStyle`
 
     html{
         box-sizing: border-box;
-        min-width: 375px;
         font-size:14px;
     }
 
@@ -18,10 +17,13 @@ export const GlobalStyle = createGlobalStyle`
 
     body{
         width:100vw;
+        min-width:375px;
         height: 100%;
         min-width: 375px;
         margin-left:auto;
         margin-right: auto;
+        display: flex;
+        justify-content: center;
     }
 
     input{

@@ -13,9 +13,9 @@ export const CountriesWraper= styled.div`
 `
 
 export const Country = styled.div`
-        flex:4 4 22rem;
-        max-width: 20rem;
-        height: 20rem;
+        flex:4 4 13rem;
+        max-width: 15rem;
+        height: 17rem;
         max-height: 22rem;
         background-color: aqua;
         margin-left:5%;
@@ -39,12 +39,12 @@ export const HalfBox = styled.div`
     background-repeat: no-repeat;
     background-size: cover;
     background-position:center;
-    -webkit-border-top-left-radius:${props=>props.isUp?"5%":"none"};
-    -webkit-border-top-right-radius: ${props=>props.isUp?"5%":"none"};
-    -moz-border-radius-topleft: ${props=>props.isUp?"5%":"none"};
-    -moz-border-radius-topright: ${props=>props.isUp?"5%":"none"};
-    border-top-left-radius: ${props=>props.isUp?"5%":"none"};
-    border-top-right-radius: ${props=>props.isUp?"5%":"none"};
+    -webkit-border-top-left-radius:${props=>props.isUp?"2%":"none"};
+    -webkit-border-top-right-radius: ${props=>props.isUp?"2%":"none"};
+    -moz-border-radius-topleft: ${props=>props.isUp?"2%":"none"};
+    -moz-border-radius-topright: ${props=>props.isUp?"2%":"none"};
+    border-top-left-radius: ${props=>props.isUp?"2%":"none"};
+    border-top-right-radius: ${props=>props.isUp?"2%":"none"};
 `
 
 export const Title = styled.h1`

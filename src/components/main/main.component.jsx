@@ -16,6 +16,7 @@ import { Wraper } from "./main.styles";
 const Main = () =>{
     const [LightMode, setLightMode] = useState(themeLight);
     const [SearchCountry, setSearchCountry] = useState('');
+    const [CountryList, setCountryList] = useState([]);
     const url = "https://restcountries.com/v3.1/all";
 
     const ChangeTheme = ()=>{
@@ -32,8 +33,11 @@ const Main = () =>{
                 {
                     const result = JSON.stringify(JSONdata);
                     const resultJS = JSON.parse(result);
-                    for(let i=0; i<resultJS.length; i++)
-                     console.log(resultJS[i].flags.svg); 
+                   /* for(let i=0; i<resultJS.length; i++)
+                     console.log(resultJS[i].flags.svg); */
+
+                     setCountryList(resultJS);
+                     console.log(CountryList);
                 }
        )
     }
@@ -55,7 +59,7 @@ const Main = () =>{
                         <Routes>
                             <Route path ="/" element ={<Navigation onClick={ChangeTheme}/>}>
                                     <Route index={true} 
-                                           element={<Home onChange={GetPlaceHolder}/>}>
+                                           element={<Home onChange={GetPlaceHolder} countryList={CountryList}/>}>
                                     </Route>
                                     <Route path="Details" 
                                            element={<CountryDetails/>}>

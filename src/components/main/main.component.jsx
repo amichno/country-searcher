@@ -11,12 +11,14 @@ import { BrowserRouter,
          Route,
 } from "react-router-dom";
 import { Wraper } from "./main.styles";
+import Loading from "../loading/loading.styles";
 
 
 const Main = () =>{
     const [LightMode, setLightMode] = useState(themeLight);
     const [SearchCountry, setSearchCountry] = useState('');
     const [CountryList, setCountryList] = useState([]);
+    const [loading, setLoading] = useState(true);
     const url = "https://restcountries.com/v3.1/all";
 
     const ChangeTheme = ()=>{
@@ -28,21 +30,21 @@ const Main = () =>{
         });
     }
 
-    const ApiConnection = ()=>{
-       const result = fetch(url).then(data => data.json()).then(JSONdata =>
+    const ApiConnection =()=>{
+       
+       const result = fetch(url).then(data =>data.json()).then(JSONdata =>
                 {
                     const result = JSON.stringify(JSONdata);
                     const resultJS = JSON.parse(result);
-                   /* for(let i=0; i<resultJS.length; i++)
-                     console.log(resultJS[i].flags.svg); */
-
-                     setCountryList(resultJS);
-                     console.log(CountryList);
+                    setCountryList(resultJS);
+                    console.log(CountryList);
+                    setLoading(false)
                 }
        )
     }
 
     useEffect(()=>{
+        //setLoading(true);
         ApiConnection();
     },[]);
 
@@ -51,16 +53,19 @@ const Main = () =>{
     }
 
     return (
-        <>
+        
             <ThemeProvider theme={LightMode}>
                 <GlobalStyle />
                 <Wraper>
                     <BrowserRouter>
                         <Routes>
                             <Route path ="/" element ={<Navigation onClick={ChangeTheme}/>}>
-                                    <Route index={true} 
+                                    {!loading?<Route index={true} 
                                            element={<Home onChange={GetPlaceHolder} countryList={CountryList}/>}>
-                                    </Route>
+                                    </Route>:
+                                    <Route index={true} 
+                                         element={<Loading />}>
+                                    </Route>}
                                     <Route path="Details" 
                                            element={<CountryDetails/>}>
                                     </Route>
@@ -69,7 +74,7 @@ const Main = () =>{
                     </BrowserRouter>
                 </Wraper>
             </ThemeProvider>
-        </>
+        
     )
 
 }

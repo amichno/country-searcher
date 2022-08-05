@@ -13,12 +13,12 @@ const Countries = (props)=>{
         <CountriesWraper>
             
                {
-                countryList.map(item=>{
+                countryList.map((item, id)=>{
                     return(
-                        <Country>
+                        <Country key={id}>
                         <HalfBox isUp={true} 
                                  style={{backgroundImage: `url(${item.flags.svg})`}} >      
-                        </HalfBox>               
+                        </HalfBox>                
                         <HalfBox>
                                 <Title>{item.name.common}</Title>
                                 <Paragraph><Span>Population: </Span>{item.population}</Paragraph>

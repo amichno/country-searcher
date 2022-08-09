@@ -11,11 +11,14 @@ import { BrowserRouter,
          Route,
 } from "react-router-dom";
 import { Wraper } from "./main.styles";
+import Loading from "../loading/loading.component";
 
 
 const Main = () =>{
     const [LightMode, setLightMode] = useState(themeLight);
     const [SearchCountry, setSearchCountry] = useState('');
+    const [CountryList, setCountryList] = useState([]);
+    const [loading, setLoading] = useState(true);
     const url = "https://restcountries.com/v3.1/all";
 
     const ChangeTheme = ()=>{
@@ -27,36 +30,56 @@ const Main = () =>{
         });
     }
 
-    const ApiConnection = ()=>{
-       const result = fetch(url).then(data => data.json()).then(JSONdata =>
+    const ApiConnection =()=>{
+       
+       const result = fetch(url).then(data =>data.json()).then(JSONdata =>
                 {
                     const result = JSON.stringify(JSONdata);
                     const resultJS = JSON.parse(result);
-                    for(let i=0; i<resultJS.length; i++)
-                     console.log(resultJS[i].flags.svg); 
+                    setCountryList(resultJS);
+                    setLoading(false);
                 }
-       )
+       );
     }
 
     useEffect(()=>{
         ApiConnection();
     },[]);
 
+    const CheckCountry = (country) => {
+        const searchCountryLower = SearchCountry.toLocaleLowerCase();
+        console.log(searchCountryLower);
+        const currentCountry = country.name.common.toLocaleLowerCase();
+        if(currentCountry.includes(searchCountryLower)) 
+        {//console.log(country.name.common);
+        return country}
+    }
+    const GetSearchCountry = ()=>{
+        const newCountryList= CountryList.filter(CheckCountry);
+        setCountryList(newCountryList);
+        console.log(newCountryList)
+    }
+
     const GetPlaceHolder = (event)=>{
         setSearchCountry(event.target.value);
+        //console.log(SearchCountry);
+        GetSearchCountry();
     }
 
     return (
-        <>
+        
             <ThemeProvider theme={LightMode}>
                 <GlobalStyle />
                 <Wraper>
                     <BrowserRouter>
                         <Routes>
                             <Route path ="/" element ={<Navigation onClick={ChangeTheme}/>}>
+                                    {!loading?<Route index={true} 
+                                           element={<Home onChange={GetPlaceHolder} countryList={CountryList}/>}>
+                                    </Route>:
                                     <Route index={true} 
-                                           element={<Home onChange={GetPlaceHolder}/>}>
-                                    </Route>
+                                         element={<Loading />}>
+                                    </Route>}
                                     <Route path="Details" 
                                            element={<CountryDetails/>}>
                                     </Route>
@@ -65,7 +88,7 @@ const Main = () =>{
                     </BrowserRouter>
                 </Wraper>
             </ThemeProvider>
-        </>
+        
     )
 
 }

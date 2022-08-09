@@ -4,13 +4,32 @@ import { CountriesWraper,
         Paragraph,
         Title,
         Span } from "./countries.styles";
-import { ShadowBox } from "../../assets/styles/mixins";
 const urlFlag =  "../../assets/icons/flagTest.svg";
 
 
-const Countries = ()=>{
+const Countries = (props)=>{
+    const countryList = props.countryList;
     return(
         <CountriesWraper>
+            
+               {
+                countryList.map((item, id)=>{
+                    return(
+                        <Country key={id}>
+                        <HalfBox isUp={true} 
+                                 style={{backgroundImage: `url(${item.flags.svg})`}} >      
+                        </HalfBox>                
+                        <HalfBox>
+                                <Title>{item.name.common}</Title>
+                                <Paragraph><Span>Population: </Span>{item.population}</Paragraph>
+                                <Paragraph><Span>Region: </Span>{item.region}</Paragraph>
+                                <Paragraph><Span>Capital: </Span>{item.capital}</Paragraph>             
+                        </HalfBox>
+                        </Country>
+                    )
+                })
+               }
+            
             <Country>
             <HalfBox isUp={true} 
                      style={{backgroundImage: `url(${urlFlag})`}} >      
@@ -22,9 +41,7 @@ const Countries = ()=>{
                     <Paragraph><Span>Capital: </Span>Nan</Paragraph>             
             </HalfBox>
             </Country>
-            <Country>
-               
-            </Country>
+
          </CountriesWraper>
     )
 }

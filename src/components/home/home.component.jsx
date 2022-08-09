@@ -13,7 +13,7 @@ const Home = (props) =>{
         <HomeWraper>
             <SearchBox onChange={props.onChange}/>
             <DataList />
-            <Countries />
+            <Countries countryList={props.countryList}/>
         </HomeWraper>
     )
 }

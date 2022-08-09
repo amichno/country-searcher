@@ -11,7 +11,7 @@ import { BrowserRouter,
          Route,
 } from "react-router-dom";
 import { Wraper } from "./main.styles";
-import Loading from "../loading/loading.styles";
+import Loading from "../loading/loading.component";
 
 
 const Main = () =>{
@@ -37,19 +37,33 @@ const Main = () =>{
                     const result = JSON.stringify(JSONdata);
                     const resultJS = JSON.parse(result);
                     setCountryList(resultJS);
-                    console.log(CountryList);
-                    setLoading(false)
+                    setLoading(false);
                 }
-       )
+       );
     }
 
     useEffect(()=>{
-        //setLoading(true);
         ApiConnection();
     },[]);
 
+    const CheckCountry = (country) => {
+        const searchCountryLower = SearchCountry.toLocaleLowerCase();
+        console.log(searchCountryLower);
+        const currentCountry = country.name.common.toLocaleLowerCase();
+        if(currentCountry.includes(searchCountryLower)) 
+        {//console.log(country.name.common);
+        return country}
+    }
+    const GetSearchCountry = ()=>{
+        const newCountryList= CountryList.filter(CheckCountry);
+        setCountryList(newCountryList);
+        console.log(newCountryList)
+    }
+
     const GetPlaceHolder = (event)=>{
         setSearchCountry(event.target.value);
+        //console.log(SearchCountry);
+        GetSearchCountry();
     }
 
     return (

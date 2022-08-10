@@ -51,23 +51,23 @@ const Main = () =>{
         console.log(searchCountryLower);
         const currentCountry = country.name.common.toLocaleLowerCase();
         if(currentCountry.includes(searchCountryLower)) 
-        {//console.log(country.name.common);
-        return country}
+             {//console.log(country.name.common);
+                 return country}
     }
     const GetSearchCountry = ()=>{
-        const newCountryList= CountryList.filter(CheckCountry);
+        const newCountryList= CountryList.filter(currentCountry =>{if(currentCountry.name.common === SearchCountry.toLocaleLowerCase())return currentCountry});
         setCountryList(newCountryList);
         console.log(newCountryList)
     }
 
     const GetPlaceHolder = (event)=>{
         setSearchCountry(event.target.value);
-        //console.log(SearchCountry);
-        GetSearchCountry();
+       // GetSearchCountry();
     }
 
+    const newCountryList= CountryList.filter(currentCountry =>{if(currentCountry.name.common.toLocaleLowerCase().includes(SearchCountry.toLocaleLowerCase()))return currentCountry});
     return (
-        
+              
             <ThemeProvider theme={LightMode}>
                 <GlobalStyle />
                 <Wraper>
@@ -75,7 +75,7 @@ const Main = () =>{
                         <Routes>
                             <Route path ="/" element ={<Navigation onClick={ChangeTheme}/>}>
                                     {!loading?<Route index={true} 
-                                           element={<Home onChange={GetPlaceHolder} countryList={CountryList}/>}>
+                                           element={<Home onChange={GetPlaceHolder} countryList={newCountryList}/>}>
                                     </Route>:
                                     <Route index={true} 
                                          element={<Loading />}>

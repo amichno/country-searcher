@@ -12,7 +12,7 @@ const Home = (props) =>{
     return(
         <HomeWraper>
             <SearchBox onChange={props.onChange}/>
-            <DataList />
+            <DataList regions={props.regions}/>
             <Countries countryList={props.countryList}/>
         </HomeWraper>
     )

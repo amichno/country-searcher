@@ -18,8 +18,11 @@ const Main = () =>{
     const [LightMode, setLightMode] = useState(themeLight);
     const [SearchCountry, setSearchCountry] = useState('');
     const [CountryList, setCountryList] = useState([]);
+    const [regionList, setRegionList] = useState([]);
     const [loading, setLoading] = useState(true);
     const url = "https://restcountries.com/v3.1/all";
+    const newCountryList= CountryList.filter(currentCountry =>{if(currentCountry.name.common
+        .toLocaleLowerCase().includes(SearchCountry.toLocaleLowerCase()))return currentCountry});
 
     const ChangeTheme = ()=>{
         setLightMode(prevState=>{
@@ -42,30 +45,39 @@ const Main = () =>{
        );
     }
 
+    const checkRegion = (item, array)=>{
+        let check = array.includes(item);
+        if(!array)
+            return true
+        else
+            if(check)
+                return false
+            else
+                return true;
+    }
+
+    const getRegionList =()=>{
+        let regionArray = [];
+        CountryList.map(item=>{
+                if(checkRegion(item.region, regionArray))
+                        regionArray.push(item.region)
+        })
+       setRegionList(regionArray);
+    }
+
     useEffect(()=>{
         ApiConnection();
     },[]);
 
-    const CheckCountry = (country) => {
-        const searchCountryLower = SearchCountry.toLocaleLowerCase();
-        console.log(searchCountryLower);
-        const currentCountry = country.name.common.toLocaleLowerCase();
-        if(currentCountry.includes(searchCountryLower)) 
-             {//console.log(country.name.common);
-                 return country}
+    useEffect(()=>{
+        getRegionList();
     }
-    const GetSearchCountry = ()=>{
-        const newCountryList= CountryList.filter(currentCountry =>{if(currentCountry.name.common === SearchCountry.toLocaleLowerCase())return currentCountry});
-        setCountryList(newCountryList);
-        console.log(newCountryList)
-    }
+    ,[newCountryList])
 
     const GetPlaceHolder = (event)=>{
         setSearchCountry(event.target.value);
-       // GetSearchCountry();
     }
 
-    const newCountryList= CountryList.filter(currentCountry =>{if(currentCountry.name.common.toLocaleLowerCase().includes(SearchCountry.toLocaleLowerCase()))return currentCountry});
     return (
               
             <ThemeProvider theme={LightMode}>
@@ -75,7 +87,9 @@ const Main = () =>{
                         <Routes>
                             <Route path ="/" element ={<Navigation onClick={ChangeTheme}/>}>
                                     {!loading?<Route index={true} 
-                                           element={<Home onChange={GetPlaceHolder} countryList={newCountryList}/>}>
+                                           element={<Home onChange={GetPlaceHolder} 
+                                           countryList={newCountryList}
+                                           regions={regionList}/>}>
                                     </Route>:
                                     <Route index={true} 
                                          element={<Loading />}>

@@ -5,14 +5,10 @@ import Countries from "../countries/countries.component";
 
 
 const Home = (props) =>{
-
-    const check = (event)=>{
-        console.log(event.target.value)
-    }
     return(
         <HomeWraper>
             <SearchBox onChange={props.onChange}/>
-            <DataList regions={props.regions}/>
+            <DataList regions={props.regions} getRegion={props.getRegion}/>
             <Countries countryList={props.countryList}/>
         </HomeWraper>
     )

@@ -4,7 +4,7 @@ const DataList =(props)=>{
     const regions = props.regions;
     return(
         <>
-           <InputList list="countries" placeholder="Filter by Region"/>
+           <InputList list="countries" placeholder="Filter by Region" onChange={props.getRegion}/>
            <DropDownList id="countries">
             {
                 regions.map((region, id) =>{

@@ -29,19 +29,6 @@ const Countries = (props)=>{
                     )
                 })
                }
-            
-            <Country>
-            <HalfBox isUp={true} 
-                     style={{backgroundImage: `url(${urlFlag})`}} >      
-            </HalfBox>               
-            <HalfBox>
-                    <Title>Country</Title>
-                    <Paragraph><Span>Population: </Span>1000000</Paragraph>
-                    <Paragraph><Span>Region: </Span>Ameryka</Paragraph>
-                    <Paragraph><Span>Capital: </Span>Nan</Paragraph>             
-            </HalfBox>
-            </Country>
-
          </CountriesWraper>
     )
 }

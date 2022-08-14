@@ -17,12 +17,13 @@ import Loading from "../loading/loading.component";
 const Main = () =>{
     const [LightMode, setLightMode] = useState(themeLight);
     const [SearchCountry, setSearchCountry] = useState('');
+    const [searchRegion, setSearchRegion] = useState('');
     const [CountryList, setCountryList] = useState([]);
     const [regionList, setRegionList] = useState([]);
     const [loading, setLoading] = useState(true);
     const url = "https://restcountries.com/v3.1/all";
     const newCountryList= CountryList.filter(currentCountry =>{if(currentCountry.name.common
-        .toLocaleLowerCase().includes(SearchCountry.toLocaleLowerCase()))return currentCountry});
+        .toLocaleLowerCase().includes(SearchCountry.toLocaleLowerCase())&& currentCountry.region.toLocaleLowerCase().includes(searchRegion.toLocaleLowerCase()))return currentCountry});
 
     const ChangeTheme = ()=>{
         setLightMode(prevState=>{
@@ -58,11 +59,16 @@ const Main = () =>{
 
     const getRegionList =()=>{
         let regionArray = [];
-        CountryList.map(item=>{
+        newCountryList.map(item=>{
                 if(checkRegion(item.region, regionArray))
                         regionArray.push(item.region)
         })
        setRegionList(regionArray);
+    }
+
+    const getRegion = (event)=>{
+        console.log(event.target.value);
+        setSearchRegion(event.target.value);
     }
 
     useEffect(()=>{
@@ -72,7 +78,7 @@ const Main = () =>{
     useEffect(()=>{
         getRegionList();
     }
-    ,[newCountryList])
+    ,[SearchCountry])
 
     const GetPlaceHolder = (event)=>{
         setSearchCountry(event.target.value);
@@ -89,7 +95,8 @@ const Main = () =>{
                                     {!loading?<Route index={true} 
                                            element={<Home onChange={GetPlaceHolder} 
                                            countryList={newCountryList}
-                                           regions={regionList}/>}>
+                                           regions={regionList}
+                                           getRegion={getRegion}/>}>
                                     </Route>:
                                     <Route index={true} 
                                          element={<Loading />}>

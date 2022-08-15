@@ -8,7 +8,7 @@ import Home from "../home/home.component";
 import CountryDetails from "../countryDetails/countryDetails.component";
 import { BrowserRouter, 
          Routes, 
-         Route,
+         Route
 } from "react-router-dom";
 import { Wraper } from "./main.styles";
 import Loading from "../loading/loading.component";
@@ -22,8 +22,10 @@ const Main = () =>{
     const [regionList, setRegionList] = useState([]);
     const [loading, setLoading] = useState(true);
     const url = "https://restcountries.com/v3.1/all";
+
     const newCountryList= CountryList.filter(currentCountry =>{if(currentCountry.name.common
-        .toLocaleLowerCase().includes(SearchCountry.toLocaleLowerCase())&& currentCountry.region.toLocaleLowerCase().includes(searchRegion.toLocaleLowerCase()))return currentCountry});
+        .toLocaleLowerCase().includes(SearchCountry.toLocaleLowerCase())&& 
+        currentCountry.region.toLocaleLowerCase().includes(searchRegion.toLocaleLowerCase()))return currentCountry});
 
     const ChangeTheme = ()=>{
         setLightMode(prevState=>{
@@ -67,18 +69,18 @@ const Main = () =>{
     }
 
     const getRegion = (event)=>{
-        console.log(event.target.value);
         setSearchRegion(event.target.value);
     }
 
     useEffect(()=>{
         ApiConnection();
+        getRegionList();
     },[]);
 
-    useEffect(()=>{
-        getRegionList();
+    /*useEffect(()=>{
+        
     }
-    ,[SearchCountry])
+    ,[newCountryList])*/
 
     const GetPlaceHolder = (event)=>{
         setSearchCountry(event.target.value);
@@ -101,8 +103,9 @@ const Main = () =>{
                                     <Route index={true} 
                                          element={<Loading />}>
                                     </Route>}
-                                    <Route path="Details" 
-                                           element={<CountryDetails/>}>
+                                    <Route path="/Details/:name" 
+                                           element={<CountryDetails
+                                                    countryList={CountryList}/>}>
                                     </Route>
                             </Route>
                         </Routes>

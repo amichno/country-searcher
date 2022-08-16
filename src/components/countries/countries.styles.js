@@ -42,6 +42,8 @@ export const HalfBox = styled.div`
     background-repeat: no-repeat;
     background-size: cover;
     background-position:center;
+    display: flex;
+    flex-direction: column;
     -webkit-border-top-left-radius:${props=>props.isUp?"2%":"none"};
     -webkit-border-top-right-radius: ${props=>props.isUp?"2%":"none"};
     -moz-border-radius-topleft: ${props=>props.isUp?"2%":"none"};

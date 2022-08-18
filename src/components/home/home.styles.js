@@ -3,7 +3,7 @@ import {device} from "../../assets/styles/mediaQueries";
 
 export const HomeWraper = styled.div`
     width:100%;
-    min-height: fit-content;
+    min-height: 100vh;
     max-height: 100%;
     padding-bottom: 1rem;
     background-image: linear-gradient(${({theme})=>theme.colors.BackGround}, ${({theme})=>theme.colors.BoxBackGroundColor});

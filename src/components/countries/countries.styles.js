@@ -17,12 +17,15 @@ export const Country = styled.div`
         max-width: 15rem;
         height: 17rem;
         max-height: 22rem;
-        background-color: aqua;
         margin-left:5%;
         margin-right:5%;
         margin-bottom: 5%;
         align-content: center;
-        ${ShadowBox}
+        ${ShadowBox};
+        a{
+            text-decoration: none;
+            color:inherit
+        }
 `
 
 export const Img = styled.img`
@@ -34,28 +37,34 @@ export const Img = styled.img`
     background-position:center;
 `
 export const HalfBox = styled.div`
-    height: 50%;
-    width: 100%;
+    height:${props=>props.isBig?"100%":"50%"};
+    width:${props=>props.isBig?"50%":"100%"};
     background-repeat: no-repeat;
     background-size: cover;
     background-position:center;
+    display: flex;
+    flex-direction: column;
     -webkit-border-top-left-radius:${props=>props.isUp?"2%":"none"};
     -webkit-border-top-right-radius: ${props=>props.isUp?"2%":"none"};
     -moz-border-radius-topleft: ${props=>props.isUp?"2%":"none"};
     -moz-border-radius-topright: ${props=>props.isUp?"2%":"none"};
     border-top-left-radius: ${props=>props.isUp?"2%":"none"};
     border-top-right-radius: ${props=>props.isUp?"2%":"none"};
+    overflow-y: scroll;
 `
 
 export const Title = styled.h1`
     padding-left: 10%;
     padding-top: 5%;
-    padding-bottom: 2%;
-    font-size: 1.3rem;
+    padding-bottom: ${props=>props.isBig?"5%":"2%"};;
+    font-size: ${props=>props.isBig?"3.5rem":"1.3rem"};
 `
 
 export const Paragraph = styled.p`
     padding-left: 10%;
+    font-size: inherit;
+    padding-bottom: ${props=> props.isSpace?"1rem":"normal"};
+    padding-top: ${props=> props.isFirst?"2rem":"normal"};
 `
 export const Span = styled.span`
     font-weight: 600;

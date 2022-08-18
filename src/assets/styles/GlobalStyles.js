@@ -30,5 +30,9 @@ export const GlobalStyle = createGlobalStyle`
         color:inherit;
     }
 
+    button{
+        font-family: inherit;
+        color: inherit;
+    }
 
 `;

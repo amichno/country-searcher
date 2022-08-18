@@ -25,6 +25,7 @@ const CountryDetails = ({countryList}) =>{
     const currencies2 = JSON.parse((JSON.stringify(country[0].currencies)));
     const {currencies} = country[0];
     const {languages} = country[0]
+    const {nativeName} = country[0].name;
     let {borders} = country[0];
 
     const bordersCountries = countryList.reduce(function(accu, item){
@@ -53,7 +54,7 @@ const CountryDetails = ({countryList}) =>{
                     <WraperColumn>
                         <Column>
                             <Paragraph isSpace={true}>
-                                <Span>Native Name: </Span> 
+                                <Span>Native Name: </Span> {Object.values(nativeName)[0].official}
                             </Paragraph>
                             <Paragraph isSpace={true}>
                                 <Span>Population: </Span> {country[0].population}

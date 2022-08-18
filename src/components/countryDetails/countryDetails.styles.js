@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { ShadowBox } from "../../assets/styles/mixins";
 
 export const OneBox = styled.div`
     width:90%;
@@ -10,13 +11,23 @@ export const OneBox = styled.div`
     align-items: center;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 2rem;
-   
 `
 
 export const Back = styled.div`
     width:100%;
     height:3rem;
+    margin-bottom: 5%;
+    margin-top: 5%;
+`
+
+export const Button = styled.button`
+    padding: 0.5rem 2rem;
+    border: none;
+    ${ShadowBox}
+    font-size: 1rem;
+    font-weight: 600;
+    margin-left: ${props=>props.isBorder?"2rem":"normal"};
+    margin-bottom: ${props=>props.isBorder?"2rem":"normal"};
 `
 
 export const DetailsWraper = styled.div`
@@ -35,10 +46,11 @@ export const WraperColumn = styled.div`
     height:100%;
     display: flex;
     flex-direction: row;
+   // flex-wrap: wrap;
 `
 
 export const Flag = styled.div`
-    aspect-ratio: 2/1;
+    aspect-ratio: 5/3;
     background-repeat: no-repeat;
     background-size: cover;
     background-position:center;

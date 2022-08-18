@@ -56,12 +56,15 @@ export const HalfBox = styled.div`
 export const Title = styled.h1`
     padding-left: 10%;
     padding-top: 5%;
-    padding-bottom: 2%;
-    font-size: 1.3rem;
+    padding-bottom: ${props=>props.isBig?"5%":"2%"};;
+    font-size: ${props=>props.isBig?"3.5rem":"1.3rem"};
 `
 
 export const Paragraph = styled.p`
     padding-left: 10%;
+    font-size: inherit;
+    padding-bottom: ${props=> props.isSpace?"1rem":"normal"};
+    padding-top: ${props=> props.isFirst?"2rem":"normal"};
 `
 export const Span = styled.span`
     font-weight: 600;

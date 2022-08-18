@@ -1,18 +1,45 @@
 import { useParams } from "react-router-dom";
 import { HalfBox, Span } from "../countries/countries.styles";
 import { Paragraph, Title } from "../countries/countries.styles";
-import { OneBox,Back, Column, WraperColumn, Flag } from "./countryDetails.styles";
+import { HomeWraper } from "../home/home.styles";
+import { OneBox,Back, Column, WraperColumn, Flag, Button } from "./countryDetails.styles";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowLeftLong } from "@fortawesome/free-solid-svg-icons";
 
 const CountryDetails = ({countryList}) =>{
     const {name} = useParams();
-   
-    //const name = params.name;
+    let cokolwiek;
+
+    const CheckName = name =>{
+        let country;
+        const data = fetch(`https://restcountries.com/v3.1/alpha/${name}`)
+        .then(data =>data.json())
+        .then(result=>{ 
+            return result[0].name.common
+           
+            }).catch();
+        
+    }
+
     const country = countryList.filter(item=>{if(item.name.common === name) return item})
-    const waluta = JSON.parse((JSON.stringify(country[0].currencies)));
+    const currencies2 = JSON.parse((JSON.stringify(country[0].currencies)));
+    const {currencies} = country[0];
+    const {languages} = country[0]
+    let {borders} = country[0];
+
+    const bordersCountries = countryList.reduce(function(accu, item){
+        borders.map(item2 =>  {if(item2.includes(item.cca3)) accu.push(item.name.common)})
+        return accu
+    },[]);
+
+
+    const borders2=[];
     return(
+        
+        <HomeWraper>
             <OneBox>
                 <Back>
-                    Back
+                   <Button><FontAwesomeIcon icon={faArrowLeftLong} />  Back</Button>
                 </Back>
                 <HalfBox isBig={true}  >
                     <Flag style={{backgroundImage: `url(${country[0].flags.svg})`}}>
@@ -22,27 +49,49 @@ const CountryDetails = ({countryList}) =>{
               
                 </HalfBox>
                 <HalfBox isBig={true}>
-                    <Title>{country[0].name.common}</Title>
+                    <Title isBig={true}>{country[0].name.common}</Title>
                     <WraperColumn>
                         <Column>
-                        <Paragraph>
-                            <Span>Native Name:</Span> 
-                        </Paragraph>
-                        <Paragraph>
-                            <Span>Population:</Span> 
-                        </Paragraph>
+                            <Paragraph isSpace={true}>
+                                <Span>Native Name: </Span> 
+                            </Paragraph>
+                            <Paragraph isSpace={true}>
+                                <Span>Population: </Span> {country[0].population}
+                            </Paragraph>
+                            <Paragraph isSpace={true}>
+                                <Span>Region: </Span> {country[0].region}
+                            </Paragraph>
+                            <Paragraph isSpace={true}>
+                                <Span>Sub Region: </Span> {country[0].subregion}
+                            </Paragraph>
+                            <Paragraph isSpace={true}>
+                                <Span>Capital: </Span> {country[0].capital}
+                            </Paragraph>
                         </Column>
                         <Column>
-                        <Paragraph>
-                                <Span>Top level domain:</Span> 
+                            <Paragraph isSpace={true}>
+                                    <Span>Top level domain:</Span>  {country[0].tld}
                             </Paragraph>
-                        <Paragraph>
-                                <Span>Currencies:</Span> {console.log(country[0].currencies)}
+                            <Paragraph isSpace={true}>
+                                    <Span>Currencies:</Span> {(Object.values(currencies2))[0].name}
+                            </Paragraph>
+                            <Paragraph isSpace={true}>
+                                <Span>Languages: </Span> {Object.values(languages).join(', ')}
                             </Paragraph>
                         </Column>
                     </WraperColumn>
+                    <Paragraph isSpace={true} isFirst={true}>
+                                <Span>Borders: </Span> {
+                                    bordersCountries.map((item, id)=>{
+                                        cokolwiek=CheckName(item);
+                                        console.log(cokolwiek);
+                                        return <Button isBorder={true} key ={id}>{item}</Button>
+                                    })
+                                }
+                    </Paragraph>
                 </HalfBox>
             </OneBox>
+        </HomeWraper>
     )
 }
 

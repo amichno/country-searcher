@@ -17,7 +17,7 @@ const Countries = (props)=>{
                 countryList.map((item, id)=>{
                     return(
                             <Country key={id}>
-                                <Link to ={`/Details/${item.name.common}`}>
+                                <Link to ={`/Details/${item.cca3}`}>
                                     <HalfBox isUp={true} 
                                             style={{backgroundImage: `url(${item.flags.svg})`}} 
                                             isBig={false}>      

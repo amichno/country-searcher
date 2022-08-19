@@ -28,6 +28,7 @@ export const Button = styled.button`
     font-weight: 600;
     margin-left: ${props=>props.isBorder?"2rem":"normal"};
     margin-bottom: ${props=>props.isBorder?"2rem":"normal"};
+    cursor: pointer;
 `
 
 export const DetailsWraper = styled.div`

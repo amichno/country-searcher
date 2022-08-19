@@ -5,9 +5,11 @@ import { HomeWraper } from "../home/home.styles";
 import { OneBox,Back, Column, WraperColumn, Flag, Button } from "./countryDetails.styles";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeftLong } from "@fortawesome/free-solid-svg-icons";
+import { useNavigate } from "react-router-dom";
 
 const CountryDetails = ({countryList}) =>{
     const {name} = useParams();
+    const goBack = useNavigate();
     let cokolwiek;
 
     const CheckName = name =>{
@@ -21,10 +23,11 @@ const CountryDetails = ({countryList}) =>{
         
     }
 
-    const country = countryList.filter(item=>{if(item.name.common === name) return item})
+    const country = countryList.filter(item=>{if(item.cca3 === name) return item})
     const currencies2 = JSON.parse((JSON.stringify(country[0].currencies)));
     const {currencies} = country[0];
     const {languages} = country[0]
+    const {nativeName} = country[0].name;
     let {borders} = country[0];
 
     const bordersCountries = countryList.reduce(function(accu, item){
@@ -32,14 +35,12 @@ const CountryDetails = ({countryList}) =>{
         return accu
     },[]);
 
-
-    const borders2=[];
     return(
         
         <HomeWraper>
             <OneBox>
                 <Back>
-                   <Button><FontAwesomeIcon icon={faArrowLeftLong} />  Back</Button>
+                   <Button onClick = {()=>goBack(-1)}><FontAwesomeIcon icon={faArrowLeftLong} />  Back</Button>
                 </Back>
                 <HalfBox isBig={true}  >
                     <Flag style={{backgroundImage: `url(${country[0].flags.svg})`}}>
@@ -53,7 +54,7 @@ const CountryDetails = ({countryList}) =>{
                     <WraperColumn>
                         <Column>
                             <Paragraph isSpace={true}>
-                                <Span>Native Name: </Span> 
+                                <Span>Native Name: </Span> {Object.values(nativeName)[0].official}
                             </Paragraph>
                             <Paragraph isSpace={true}>
                                 <Span>Population: </Span> {country[0].population}

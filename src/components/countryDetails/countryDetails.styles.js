@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { ShadowBox } from "../../assets/styles/mixins";
+import { device } from "../../assets/styles/mediaQueries";
 
 export const OneBox = styled.div`
     width:90%;
@@ -11,6 +12,10 @@ export const OneBox = styled.div`
     align-items: center;
     margin-left: auto;
     margin-right: auto;
+    @media (max-width: ${device.m}) {
+        flex-direction: column;
+        
+    }
 `
 
 export const Back = styled.div`
@@ -47,7 +52,7 @@ export const WraperColumn = styled.div`
     height:100%;
     display: flex;
     flex-direction: row;
-   // flex-wrap: wrap;
+
 `
 
 export const Flag = styled.div`

@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { device } from "../../assets/styles/mediaQueries";
 import { ShadowBox } from "../../assets/styles/mixins";
 
 export const CountriesWraper= styled.div`
@@ -51,6 +52,10 @@ export const HalfBox = styled.div`
     border-top-left-radius: ${props=>props.isUp?"2%":"none"};
     border-top-right-radius: ${props=>props.isUp?"2%":"none"};
     overflow-y: scroll;
+    @media (max-width: ${device.m}) {
+        width:${props=>props.isBig?"100%":"100%"};
+        
+    }
 `
 
 export const Title = styled.h1`
@@ -58,6 +63,7 @@ export const Title = styled.h1`
     padding-top: 5%;
     padding-bottom: ${props=>props.isBig?"5%":"2%"};;
     font-size: ${props=>props.isBig?"3.5rem":"1.3rem"};
+    overflow: auto;
 `
 
 export const Paragraph = styled.p`

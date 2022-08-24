@@ -48,6 +48,7 @@ const Main = () =>{
        );
     }
 
+
     const checkRegion = (item, array)=>{
         let check = array.includes(item);
         if(!array)
@@ -74,13 +75,12 @@ const Main = () =>{
 
     useEffect(()=>{
         ApiConnection();
-        getRegionList();
     },[]);
 
-    /*useEffect(()=>{
-        
+    useEffect(()=>{
+        getRegionList();
     }
-    ,[newCountryList])*/
+    ,[newCountryList])
 
     const GetPlaceHolder = (event)=>{
         setSearchCountry(event.target.value);

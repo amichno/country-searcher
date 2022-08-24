@@ -10,28 +10,19 @@ import { useNavigate } from "react-router-dom";
 const CountryDetails = ({countryList}) =>{
     const {name} = useParams();
     const goBack = useNavigate();
-    let cokolwiek;
-
-    const CheckName = name =>{
-        let country;
-        const data = fetch(`https://restcountries.com/v3.1/alpha/${name}`)
-        .then(data =>data.json())
-        .then(result=>{ 
-            return result[0].name.common
-           
-            }).catch();
-        
-    }
 
     const country = countryList.filter(item=>{if(item.cca3 === name) return item})
     const currencies2 = JSON.parse((JSON.stringify(country[0].currencies)));
-    const {currencies} = country[0];
     const {languages} = country[0]
     const {nativeName} = country[0].name;
     let {borders} = country[0];
 
     const bordersCountries = countryList.reduce(function(accu, item){
-        borders.map(item2 =>  {if(item2.includes(item.cca3)) accu.push(item.name.common)})
+        if (borders === undefined) borders=[];
+        if(borders !==[])
+            borders.map(item2 =>{if(item2.includes(item.cca3)) accu.push(item.name.common)})
+        else
+            accu =[];
         return accu
     },[]);
 
@@ -44,10 +35,7 @@ const CountryDetails = ({countryList}) =>{
                 </Back>
                 <HalfBox isBig={true}  >
                     <Flag style={{backgroundImage: `url(${country[0].flags.svg})`}}>
-
                     </Flag>
-                   
-              
                 </HalfBox>
                 <HalfBox isBig={true}>
                     <Title isBig={true}>{country[0].name.common}</Title>
@@ -81,14 +69,12 @@ const CountryDetails = ({countryList}) =>{
                             </Paragraph>
                         </Column>
                     </WraperColumn>
-                    <Paragraph isSpace={true} isFirst={true}>
-                                <Span>Borders: </Span> {
+                    <Paragraph isSpace={true} isFirst={true}>{bordersCountries.length>0?<div><Span>Borders: </Span> {
                                     bordersCountries.map((item, id)=>{
-                                        cokolwiek=CheckName(item);
-                                        console.log(cokolwiek);
                                         return <Button isBorder={true} key ={id}>{item}</Button>
                                     })
-                                }
+                                }</div>:<Span>No borders</Span>}
+                                
                     </Paragraph>
                 </HalfBox>
             </OneBox>

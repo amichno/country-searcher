@@ -52,7 +52,7 @@ export const WraperColumn = styled.div`
     height:100%;
     display: flex;
     flex-direction: row;
-
+    flex-wrap: wrap;
 `
 
 export const Flag = styled.div`
